@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Create {{block.super}}
+{% endblock title %}
+
+{% block content %}
+    <h1>Create Articles</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save</button>
+    </form>
+
+    <a href="{% url 'articles' %}">Back to list</a> |
+{% endblock content %}

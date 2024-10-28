@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Edit {{block.super}}
+{% endblock title %}
+
+{% block content %}
+    <h1>Edit Articles</h1>
+    <p>Last edited on {{ article.updated_at | date:"F j, Y" }}</p>
+    <p>{{ article.word_count }} word{{ article.word_count | pluralize }}.</p>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save</button>
+    </form>
+
+    <a href="{% url 'articles' %}">Back to list</a> |
+    <a href="{% url 'delete_article' article.id %}">Delete</a> |
+{% endblock content %}
+
+
+    
