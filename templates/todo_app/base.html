@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link  href="{% static 'styles.css' %}" rel="stylesheet">
+  <title>Todo</title>
+</head>
+<body>
+  <header>
+    <nav>{% include 'nav.html' %}</nav>
+  </header>
+  <hr>
+
+  <main>
+    {% block content %}
+    
+    {% endblock content %}
+  </main>
+</body>
+</html>

@@ -1,16 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  href={% static "styles.css" %} rel="stylesheet">
     <title>
       {% block title %}Django{% endblock title %}
     </title>
     
   </head>
   <body>
-    <nav>{% include 'nav.html'%}</nav>
+    <nav>{% include 'nav.html' %}</nav>
     <hr>
     {% block content %}
     {% endblock content%}

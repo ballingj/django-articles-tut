@@ -9,8 +9,7 @@
     <p>Are you sure you want to delete "{{ article.title}}"?</p>
     <form method="POST">
       {% csrf_token %}
-      <button type="submit">Delete</button>
+      <button type="submit" id="action-2">Delete</button>
+      <a href="{% url 'articles' %}"><button type="button">Cancel</button></a>
     </form>
-
-    <a href="{% url 'articles' %}"><button>Cancel</button></a>
 {% endblock content %}

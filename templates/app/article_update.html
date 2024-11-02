@@ -5,6 +5,7 @@
 {% endblock title %}
 
 {% block content %}
+<div class='article_create'>
     <h1>Edit Articles</h1>
     <p>Last edited on {{ article.updated_at | date:"F j, Y" }}</p>
     <p>{{ article.word_count }} word{{ article.word_count | pluralize }}.</p>
@@ -13,9 +14,10 @@
       {{ form.as_p }}
       <button type="submit">Save</button>
     </form>
+</div>
+<a href="{% url 'articles' %}">Back to list</a> |
+<a href="{% url 'delete_article' article.id %}">Delete</a> |
 
-    <a href="{% url 'articles' %}">Back to list</a> |
-    <a href="{% url 'delete_article' article.id %}">Delete</a> |
 {% endblock content %}
 
 

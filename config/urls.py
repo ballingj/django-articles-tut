@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from app import views
 from pages import views
+from todo_app import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("articles/", include("app.urls")),
     path('pages/', include('pages.urls')),
+    path('todo/', include('todo_app.urls')),
 ]
