@@ -9,3 +9,4 @@ class TodoAdmin(admin.ModelAdmin):
   list_display = ("title", "due_date", "completed")
   ordering = ("due_date", )
   list_filter = ("completed",)
+  search_fields = ("title", "description",)
