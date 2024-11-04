@@ -1,7 +1,7 @@
 {% extends "todo_app/base.html" %}
 
 {% block content %}
-<h2>Todo List</h2>
+<h2>Completed Todo List</h2>
 <a href="{% url 'todo_create' %}"><button type="button">Add Todo</button></a>
 <table>
   <tr>
@@ -26,9 +26,9 @@
   </tr>
   {% empty %}
   <tr>
-    <td colspan="2">No todos found.</td>
+    <td colspan="2">No completed todos found.</td>
   </tr>
   {% endfor %}
 </table>
-<a href="{% url 'todo_completed' %}">See completed list</a> |
+<a href="{% url 'todo_list' %}">Back to Todo list</a> |
 {% endblock %}
