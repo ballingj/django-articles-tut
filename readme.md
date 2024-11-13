@@ -9,10 +9,10 @@ https://github.com/betterstack-community/django-todo-app/
 
 3. Build the docker image and run -- make sure to be in the project directory
   a. Build the image 
-  ``` sh
+  ``` bash
   docker docker build -t django-salvatierra-tut . 
   ```
   b. run the image
-  ``` sh
-  docker run -p 8005:8000 --name django-salvatierra-tut -v "(pwd):/app" django-salvatierra-tut
+  ``` bash
+  docker run -p 8005:8000 --name django-salvatierra-tut -v "$(pwd):/app" django-salvatierra-tut
   ```
