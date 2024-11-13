@@ -13,6 +13,6 @@ https://github.com/betterstack-community/django-todo-app/
   docker docker build -t django-salvatierra-tut . 
   ```
   b. run the image
-  ``` pyshthon
+  ``` sh
   docker run -p 8005:8000 --name django-salvatierra-tut -v "(pwd):/app" django-salvatierra-tut
   ```
