@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link  href={% static "styles.css" %} rel="stylesheet">
+    {% comment %} datatables css cdn {% endcomment %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+  
+
     <title>
       {% block title %}Django{% endblock title %}
     </title>
@@ -18,5 +22,17 @@
     {% endblock content%}
     <hr>
     <footer>Footer goes here</footer>
+    
+    {% comment %} datatables javascript {% endcomment %}
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
+    {% comment %} jquery required for datatables {% endcomment %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+      new DataTable('#myTable');
+    </script>
+
+
   </body>
 </html>

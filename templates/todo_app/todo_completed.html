@@ -3,32 +3,40 @@
 {% block content %}
 <h2>Completed Todo List</h2>
 <a href="{% url 'todo_create' %}"><button type="button">Add Todo</button></a>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Actions</th>
-    <th>Completed</th>
-    <th>Due Date</th>
-  </tr>
-  {% for todo in todos %}
-  <tr>
-    <td>{{ todo.title }}</td>
-    <td>{{ todo.description }}</td>
-    <td>
-      <a href="{% url 'todo_update' todo.pk %}"><button type="button" id="action-1">Update</button></a>
-      <a href="{% url 'todo_delete' todo.pk %}"><button type="button" id="action-2">Delete</button></a>
-    </td>
-    <td>
-      {{ todo.completed}}
-    </td>
-    <td>{{ todo.due_date}}</td>
-  </tr>
-  {% empty %}
-  <tr>
-    <td colspan="2">No completed todos found.</td>
-  </tr>
-  {% endfor %}
+<table id="myTable" class="display" style="width:100%">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Actions</th>
+      <th>Completed</th>
+      <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody>  
+    {% for todo in todos %}
+    <tr>
+      <td>{{ todo.title }}</td>
+      <td>{{ todo.description }}</td>
+      <td>
+        <a href="{% url 'todo_update' todo.pk %}"><button type="button" id="action-1">Update</button></a>
+        <a href="{% url 'todo_delete' todo.pk %}"><button type="button" id="action-2">Delete</button></a>
+      </td>
+      <td>
+        {{ todo.completed}}
+      </td>
+      <td>{{ todo.due_date}}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="2">No completed todos found.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 <a href="{% url 'todo_list' %}">Back to Todo list</a> |
 {% endblock %}
