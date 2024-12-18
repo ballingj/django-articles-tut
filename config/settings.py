@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-izzjc$%v=9c79b@dl9mjeesl$1jgpglrh02@b2%^y*1j4&b+&^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # local apps
     'app.apps.AppConfig',
     'pages.apps.PagesConfig',
-    'todo_app.apps.TodoAppConfig'
+    'todo_app.apps.TodoAppConfig',
+    'links.apps.LinksConfig',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
