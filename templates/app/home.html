@@ -10,7 +10,7 @@
         {% for article in articles %}
           <li>{{article.title}} with {{article.word_count}} word{{ article.word_count | pluralize }}. 
             <a href="{% url 'update_article' article.id %}"
-              ><button type="button">edit</button>
+              ><button type="button" id="action-1">edit</button>
             </a>
           </li>
         {% endfor %}

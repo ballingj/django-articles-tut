@@ -6,8 +6,9 @@
 {% endblock title %}
 
 {% block content %}
-<a href="{% url 'todo_create' %}"><button type="button">Add Todo</button></a>
+
 <h2>Todo List</h2>
+<a href="{% url 'todo_create' %}"><button type="button">Add Todo</button></a>
 
 <table id="myTable" class="display" style="width:100%">
   <thead>
