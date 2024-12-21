@@ -11,28 +11,32 @@
   
 
     <title>
-      {% block title %}Django{% endblock title %}
+      {% block title %}
+      {% endblock title %}
     </title>
     
   </head>
   <body>
-    <nav>{% include 'nav.html' %}</nav>
+    <header>
+      <nav>{% include 'nav.html' %}</nav>
+    </header>
     <hr>
+
     {% block content %}
     {% endblock content%}
     <hr>
+    
     <footer>Footer goes here</footer>
     
-    {% comment %} datatables javascript {% endcomment %}
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-
     {% comment %} jquery required for datatables {% endcomment %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <script>
-      new DataTable('#myTable');
-    </script>
+    {% comment %} datatables javascript {% endcomment %}
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 
+    <script type="text/javascript">
+      let table = new DataTable('#myTable');
+    </script>
 
   </body>
 </html>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+    {{block.super}} Shortly
+{% endblock title %}
+
+{% block content %}
+
+    <h1>Shortly: Link shortener</h1>
+    <ul>
+        {% for link in links %}
+            <p>{{link.name}} | {{link.clicks}} | <a href="{% url 'root_link' link.slug %}" target="_blank">/{{link.slug}}</a></p>
+            {% comment %} <p><a href="{{link.url}}">{{link.url}}</a></p> {% endcomment %}
+            {% comment %} 
+            | <a href="{% url 'link_update' link.pk %}"><button type="button" id="action-1">Update</button></a> 
+            | <a href="{% url 'link_delete' link.pk %}"><button type="button" id="action-2">Delete</button></a> 
+            {% endcomment %}
+
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'link_create' %}">Create Link</a> |
+
+{% endblock content %}
+

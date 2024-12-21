@@ -1,8 +1,12 @@
-{% extends "todo_app/base.html" %}
+{% extends "base.html" %}
+
+{% block title %}
+    {{block.super}} Edit
+{% endblock title %}
 
 {% block content %}
   <h2>Edit Todo</h2>
-  <div class="todo_create">
+  <div class="form_create">
     <form method="POST">
       {% csrf_token %}
       {{ form.as_p }}

@@ -1,8 +1,13 @@
-{% extends "todo_app/base.html" %}
+{% extends "base.html" %}
+
+
+{% block title %}
+    {{block.super}} Todo
+{% endblock title %}
 
 {% block content %}
-<h2>Todo List</h2>
 <a href="{% url 'todo_create' %}"><button type="button">Add Todo</button></a>
+<h2>Todo List</h2>
 
 <table id="myTable" class="display" style="width:100%">
   <thead>
