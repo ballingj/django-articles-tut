@@ -20,6 +20,7 @@ from app import views
 from pages import views
 from todo_app import views
 from links import views
+from link_plant import views
 
 
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
     path('pages/', include('pages.urls')),
     path('todo/', include('todo_app.urls')),
     path('shortly/', include('links.urls')),
+    path('link_plant/', include('link_plant.urls'))
 ]

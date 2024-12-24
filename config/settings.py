@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'todo_app.apps.TodoAppConfig',
     'links.apps.LinksConfig',
+    'link_plant.apps.LinkPlantConfig',
 ]
 
 

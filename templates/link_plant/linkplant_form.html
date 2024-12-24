@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{block.super}} Create
+{% endblock title %}
+
+{% block content %}
+<div class="form_create">
+    <form action="{% url 'link_plant_create' %}" method="POST" autocomplete="off" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+<a href="{% url 'link_plant_list' %}">Back to list</a> |
+{% comment %} <a href="{% url 'delete_link' link.id %}">Delete</a> | {% endcomment %}
+
+{% endblock content %}

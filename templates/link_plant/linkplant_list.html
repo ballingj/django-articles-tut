@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+    {{block.super}} Profile Links
+{% endblock title %}
+
+{% block content %}
+
+    <h1>Profile Links</h1>
+    <table id="myTable" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>Site Name</th>
+          <th>URL</th>
+          <th>Profile</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for link_plant in object_list %}
+        <tr>
+          <td>{{ link_plant.text }}</td>
+          <td>
+            <a href="{{ link_plant.url }}" target="_blank">{{ link_plant.url }}</a>
+          </td>
+          <td>{{ link_plant.profile.name}}</td>
+          <td>
+            {% comment %}  {% endcomment %}
+            <a href="{% url 'link_plant_update' link_plant.id %}">Edit</a> | 
+            <a href="{% url 'link_plant_delete' link_plant.id %}">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="2">No link profiles found.</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="{% url 'link_plant_create' %}">Add a profile link</a> |
+
+{% endblock content %}
+
