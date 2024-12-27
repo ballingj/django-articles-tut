@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+    {{block.super}} Trip
+{% endblock title %}
+
+{% block content %}
+
+    <h1>My Trips</h1>
+    <ul>
+      {% for trip in trips %}
+        <li>{{trip.city}} from {{trip.start_date}} to {{trip.end_date}}</li>
+      {% endfor %}
+    </ul>
+
+    <a href="{% url 'trip_home' %}">Add a trip</a> |
+
+{% endblock content %}
+
