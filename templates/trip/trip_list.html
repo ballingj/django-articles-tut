@@ -5,14 +5,26 @@
 
 {% block content %}
 
-    <h1>My Trips</h1>
+    {% if user.is_authenticated %}
+      <h1>My Trips</h1>
+      <p>Logged in as {{user.username}}</p>
+      {% comment %} Logout now needs to be a POST {% endcomment %}
+      <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        {% comment %} <input type='submit' Value='Logout'> {% endcomment %}
+        <button type="submit">Logout</button>
+      </form>
+
     <ul>
-      {% for trip in trips %}
-        <li>{{trip.city}} from {{trip.start_date}} to {{trip.end_date}}</li>
-      {% endfor %}
+    {% for trip in trips %}
+      <li>{{trip.city}}, {{trip.country}} from {{trip.start_date}} to {{trip.end_date}}</li>
+    {% endfor %}
     </ul>
 
     <a href="{% url 'trip_home' %}">Add a trip</a> |
 
+    {% else %}
+      <p>Please <a href=" {% url 'login' %}">Login</a></p>
+    
+    {% endif %}
 {% endblock content %}
-

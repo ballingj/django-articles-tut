@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}
+    {{block.super}} Login
+{% endblock title %}
+
+{% block content %}
+
+    {% if next %}
+      {% if not user.is_authenticated %}
+        <h1>Please login to view the page:</h1>
+      {% else %}
+        <h1>Please Login</h1>
+      {% endif%}
+    {% endif %}
+
+    <div class="form_create">
+        <form action="{% url 'login' %}" method="POST" autocomplete="off" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+            <input type="hidden" name="next" value={{next}}>
+        </form>
+    </div>
+   
+
+    <a href="{% url 'trip_home' %}">Trips</a> |
+
+{% endblock content %}

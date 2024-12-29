@@ -143,5 +143,7 @@ if not DEBUG:    # Tell Django to copy static assets into a path called `staticf
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/' # path in the URL:  www.mysite.com/media/img-1
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  # path in the directory: i.e., documents/file-xyz.png
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  # path in the directory: i.e., media/file-xyz.png
 
+# where should the user go after login
+LOGIN_REDIRECT_URL = 'trip_list'

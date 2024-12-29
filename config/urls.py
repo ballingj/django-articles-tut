@@ -36,9 +36,20 @@ urlpatterns = [
     path('shortly/', include('links.urls')),
     path('link_plant/', include('link_plant.urls')),
     path('trip/', include('trip.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 # in in DEV environment, server the files by itself
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+
+# Part of:  path('accounts/', include('django.contrib.auth.urls'))
+# accounts/ login/ [name='login']
+# accounts/ logout/ [name='logout']
+# accounts/ password_change/ [name='password_change']
+# accounts/ password_change/done/ [name='password_change_done']
+# accounts/ password_reset/ [name='password_reset']
+# accounts/ password_reset/done/ [name='password_reset_done']
+# accounts/ reset/<uidb64>/<token>/ [name='password_reset_confirm']
+# accounts/ reset/done/ [name='password_reset_complete'] 
