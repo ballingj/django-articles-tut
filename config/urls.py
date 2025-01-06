@@ -22,6 +22,7 @@ from todo_app import views
 from links import views
 from link_plant import views
 from trip import views
+from .views import SignupView
 
 # image & static settings
 from django.conf import settings
@@ -37,6 +38,7 @@ urlpatterns = [
     path('link_plant/', include('link_plant.urls')),
     path('trip/', include('trip.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', SignupView.as_view(), name='signup'),
 ]
 
 # in in DEV environment, server the files by itself

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+    {{block.super}} Trip
+{% endblock title %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+      <h1>Trip Details</h1>
+      
+      <a href="{% url 'trip_update' trip.pk %}"><button type="button" id="action-1">Edit</button></a>
+      <a href="{% url 'trip_delete' trip.pk %}"><button type="button" id="action-2">Delete</button></a>
+
+      <div class="trip-detail">
+        <p>{{trip.country}} | {{trip.city}}</p>
+
+        <h3>Notes:</h3>
+        <div class="trip-detail-flex">
+          {% for note in notes %}
+            <a href="{% url 'note_detail' note.pk %}">
+              {% if note.img %}
+                <img class="img-detail" src="{{note.img.url}}">
+              {% endif %}
+              <p>{{note.name}}</p>
+              <p> Rating: {{note.rating}}</p>
+            </a>
+          {% endfor %}
+          <a href="{% url 'note_create' %}">
+            <div class="new-note-btn">
+                <p>New Note +</p>
+            </div>
+          </a>
+        </div>
+      </div>  
+      <hr>
+      
+      <a href="{% url 'trip_list' %}">Back to list</a> |
+      <a href="{% url 'trip_create' %}">Add a trip</a> |
+    {% else %}
+      <p>Please <a href=" {% url 'login' %}">Login</a></p>
+    
+    {% endif %}
+{% endblock content %}

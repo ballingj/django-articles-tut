@@ -19,10 +19,12 @@
             {{ form.as_p }}
             <button type="submit">Login</button>
             <input type="hidden" name="next" value={{next}}>
+            <br>
+            <a href="{% url 'signup' %}"><p>No account? Register here.</p></a>
         </form>
+        
     </div>
-   
 
-    <a href="{% url 'trip_home' %}">Trips</a> |
+    {% comment %} <a href="{% url 'trip_home' %}">Trips</a> | {% endcomment %}
 
 {% endblock content %}
