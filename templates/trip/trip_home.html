@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+    {{block.super}} Trip
+{% endblock title %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+      
+      <p>{{user|capfirst}}'s Dashboard</p>
+      <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        {% comment %} <input type='submit' Value='Logout'> {% endcomment %}
+        <button type="submit">Logout</button>
+      </form>
+      <br>
+      <a href="{% url 'trip_list' %}">Trip list</a> |
+      <a href="{% url 'note_list' %}">Notes list</a> |
+      
+    {% else %}
+      <p>Please <a href=" {% url 'login' %}">Login</a></p>
+    
+    
+    {% endif %}
+
+{% endblock content %}
+
+

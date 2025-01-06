@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+    {{block.super}} Trip
+{% endblock title %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+      <h1>Note Details</h1>
+      <a href="{% url 'note_update' note.pk %}"><button type="button" id="action-1">Edit</button></a>
+      <a href="{% url 'note_delete' note.pk %}"><button type="button" id="action-2">Delete</button></a>
+      
+      <div class="note-detail">
+        <p>{{ note.name }}</p>
+        <p>Description: {{ note.description }}</p>
+        <p>Type: {{ note.type }}</p>
+        <p>Rating: {{ note.rating }}/5</p>
+        <img src="{{note.img.url}}" alt="{{ note.name }}">
+      </div>
+
+      <hr>
+      <a href="{% url 'note_list' %}">Notes list</a> |
+      <a href="{% url 'trip_list' %}">Trip list</a> |
+
+    {% else %}
+      <p>Please <a href=" {% url 'login' %}">Login</a></p>
+    {% endif %}
+
+
+{% endblock content %}

@@ -21,6 +21,12 @@ from pages import views
 from todo_app import views
 from links import views
 from link_plant import views
+from trip import views
+from .views import SignupView
+
+# image & static settings
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -29,5 +35,23 @@ urlpatterns = [
     path('pages/', include('pages.urls')),
     path('todo/', include('todo_app.urls')),
     path('shortly/', include('links.urls')),
-    path('link_plant/', include('link_plant.urls'))
+    path('link_plant/', include('link_plant.urls')),
+    path('trip/', include('trip.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', SignupView.as_view(), name='signup'),
 ]
+
+# in in DEV environment, server the files by itself
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# Part of:  path('accounts/', include('django.contrib.auth.urls'))
+# accounts/ login/ [name='login']
+# accounts/ logout/ [name='logout']
+# accounts/ password_change/ [name='password_change']
+# accounts/ password_change/done/ [name='password_change_done']
+# accounts/ password_reset/ [name='password_reset']
+# accounts/ password_reset/done/ [name='password_reset_done']
+# accounts/ reset/<uidb64>/<token>/ [name='password_reset_confirm']
+# accounts/ reset/done/ [name='password_reset_complete'] 

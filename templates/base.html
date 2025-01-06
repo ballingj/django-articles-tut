@@ -26,7 +26,11 @@
     {% endblock content%}
     <hr>
     
-    <footer>Footer goes here</footer>
+    <footer>
+      <div class="copyright">
+        Copyright &copy; {% now "Y" %} J.Ballinger
+      </div>
+    </footer>
     
     {% comment %} jquery required for datatables {% endcomment %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

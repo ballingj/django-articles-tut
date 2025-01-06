@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}
+    {{block.super}} Trip
+{% endblock title %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+      <h1>{{user|capfirst}}'s Trips</h1>
+      {% comment %} Logout now needs to be a POST {% endcomment %}
+      <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        {% comment %} <input type='submit' Value='Logout'> {% endcomment %}
+        <button type="submit">Logout</button>
+      </form>
+
+    {% for trip in trips %}
+      <div class="trip-list">
+        <a href="{% url 'trip_detail' trip.pk %}">
+          <p class="list-item">
+            {{trip.country}} | {{trip.city}}
+          </p>
+          <p>
+            {% if trip.start_date %}
+              {{ trip.start_date|date:"F jS" }}
+            {% else %}
+              TBA
+            {% endif %}
+            to
+            {% if trip.end_date %}
+              {{ trip.end_date|date:"F jS" }}
+            {% else %}
+              TBA
+            {% endif %}            
+          </p>
+        </a>
+      </div>
+    {% endfor %}
+
+    <a href="{% url 'trip_create' %}">Add a trip</a> |
+    <a href="{% url 'note_list' %}">Notes list</a> |
+
+    {% else %}
+      <p>Please <a href=" {% url 'login' %}">Login</a></p>
+    
+    {% endif %}
+{% endblock content %}

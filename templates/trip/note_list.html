@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+    {{block.super}} Notes
+{% endblock title %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+      <h1>Notes</h1>
+      <div class="trip-detail">
+
+        <div class="trip-detail-flex">
+          {% for note in object_list %}
+            <a href="{% url 'note_detail' note.pk %}">
+              <img class="img-detail" src="{{note.img.url}}" alt="{{ note.name }}">
+              <p>{{note.trip.city}}</p>
+              <p>{{note.name}}</p>
+              <p>Rating: {{note.rating}}/5</p>
+            </a>
+          {% endfor %}
+          <a href="{% url 'note_create' %}">
+            <div class="new-note-btn">
+              <p>New Note +</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <hr>
+      <a href="{% url 'trip_list' %}">Trip list</a> |
+
+    {% else %}
+      <p>Please <a href=" {% url 'login' %}">Login</a></p>
+    {% endif %}
+{% endblock content %}
