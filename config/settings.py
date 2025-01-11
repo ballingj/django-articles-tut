@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'links.apps.LinksConfig',
     'link_plant.apps.LinkPlantConfig',
     "trip.apps.TripConfig",
+    'rest_framework',
 ]
 
 

@@ -6,6 +6,10 @@ from django.views.generic import TemplateView, CreateView, DetailView, ListView,
 from django.contrib.auth.decorators import login_required # for FBV
 from django.contrib.auth.mixins import LoginRequiredMixin # for CBV
 
+# DRF stuff
+from rest_framework import viewsets, permissions
+from .serializers import TripSerializer, NoteSerializer
+
 
 from .models import Trip, Note
 
@@ -112,3 +116,24 @@ class TripDeleteView(DeleteView):
   # expect a template name model_confirm_delete.html
   # template_name = "trip/trip_confirm_delete.html"
   # or you can delete without confirmation/or template - send a post request to this url
+  
+  
+  
+# DRF stuff
+
+class TripViewSet(viewsets.ModelViewSet):
+  # template_name = 'trip/trip_form.html'
+  queryset = Trip.objects.all()
+  model = Trip
+  serializer_class = TripSerializer
+  # Read permission unless authenticated
+  permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class NoteViewSet(viewsets.ModelViewSet):
+  
+  queryset = Note.objects.all()
+  model = Note
+  serializer_class = NoteSerializer
+  # Read permission unless authenticated
+  permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+  

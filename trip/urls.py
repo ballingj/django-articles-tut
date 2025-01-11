@@ -1,8 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import HomeView, trips_list, TripCreateView, TripDetailView, NoteListView, NoteDetailView, NoteCreateView, NoteUpdateView, NoteDeleteView, TripUpdateView, TripDeleteView
+from .views import HomeView, trips_list, TripCreateView, TripDetailView, NoteListView, NoteDetailView, NoteCreateView, NoteUpdateView, NoteDeleteView, TripUpdateView, TripDeleteView, TripViewSet, NoteViewSet
 
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'trip', TripViewSet)
+router.register(r'note', NoteViewSet)
 
 urlpatterns = [
     path("", HomeView.as_view(), name='trip_home'),
@@ -16,5 +21,7 @@ urlpatterns = [
     path("note/create/", NoteCreateView.as_view(), name='note_create'),
     path("note/<int:pk>/update/", NoteUpdateView.as_view(), name='note_update'),
     path("note/<int:pk>/delete/", NoteDeleteView.as_view(), name='note_delete'),
+    # DRF stuff
+    path('api/', include(router.urls)),
 ]
 
